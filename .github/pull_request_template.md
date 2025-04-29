@@ -1,14 +1,10 @@
-# Pull Request Template
-
 ## Description
 Please include a clear description of the changes made:
 
 * Brief summary of changes
-* Related issue(s): #XXXX
 * Type of change:
   - [ ] Bug fix
   - [ ] New feature
-  - [ ] Documentation update
   - [ ] Code optimization
   - [ ] Other (please specify)
 
