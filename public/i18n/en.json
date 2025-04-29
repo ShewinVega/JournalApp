@@ -1,0 +1,33 @@
+{
+  "titles": {
+    "login": "Login",
+    "journal": "Journal Page"
+  },
+  "buttons": {
+    "login": "login",
+    "google": "Google"
+  },
+  "fields": {
+    "name": {
+      "base": "name",
+      "required": "Name is required",
+      "min": "Name must have at least 3 characters"
+    },
+    "email": {
+      "base": "email",
+      "required": "Email is required",
+      "valid": "Email must be valid"
+    },
+    "password": {
+      "base": "password",
+      "required": "Password is required",
+      "min": "Password must have at least 6 characters"
+    },
+    "confirmPassword": {
+      "base": "confirmPassword",
+      "required": "ConfirmPassword is required",
+      "min": "password confirmation must have at least 6 characters",
+      "match": "Passwords are differents"
+    }
+  }
+}
