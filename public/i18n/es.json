@@ -1,0 +1,33 @@
+{
+  "titles": {
+    "login": "Inicio de Sesion",
+    "journal": "Diario"
+  },
+  "buttons": {
+    "login": "Iniciar sesion",
+    "google": "Google"
+  },
+  "fields": {
+    "name": {
+      "base": "nombre",
+      "required": "Nombre requerido",
+      "min": "Nombre debe tener al menos 3 caracteres"
+    },
+    "email": {
+      "base": "correo",
+      "required": "Correo",
+      "valid": "Correo debe ser válido"
+    },
+    "password": {
+      "base": "Contraseña",
+      "required": "Contraseña",
+      "min": "Contraseña debe tener al menos 6 caracteres"
+    },
+    "confirmPassword": {
+      "base": "Confirmar contraseña",
+      "required": "Confirmar contraseña es requerido",
+      "min": "confirmar contraseña debe tener al menos 6 caracteres",
+      "match": "Contraseñas no coinciden"
+    }
+  }
+}
