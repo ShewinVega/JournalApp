@@ -12,7 +12,8 @@
       "@router/*": ["./router/*"],
       "@utils/*": ["./utils/*"],
       "@components/*": ["./components/*"],
-      "@constants/*": ["./constants/*"]
+      "@constants/*": ["./constants/*"],
+      "@models/*": ["./models/*"]
     }
   }
 }

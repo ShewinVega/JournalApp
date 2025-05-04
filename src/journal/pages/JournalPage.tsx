@@ -12,6 +12,7 @@ import {
   LANGUAGES,
 } from "../../constants/internationalization.constant";
 import { useTranslation } from "react-i18next";
+import { JournalLayout } from "../layout/JournalLayout";
 
 // get language if this one exist
 const languageStorage = localStorage.getItem("lng") || "es";
@@ -36,43 +37,32 @@ export const JournalPage = () => {
   };
 
   return (
-    <>
+    <JournalLayout>
       <Grid
-        container
         display="flex"
-        flexDirection="column"
+        justifyContent="space-between"
+        padding="20px 50px "
         sx={{
-          width: "100vw",
-          minHeight: "100vh",
-          backgroundColor: "primary.main",
+          mt: 2,
         }}
       >
-        <Grid
-          display="flex"
-          justifyContent="space-between"
-          padding="20px 50px "
-          sx={{
-            mt: 2,
-          }}
-        >
-          <Typography variant="h1">{t("titles.journal")}</Typography>
-          <FormControl>
-            <Select
-              labelId="internationalization-select-label"
-              id="internationalization-select"
-              value={currentLanguage.code}
-              label={currentLanguage.label}
-              onChange={handleLanguage}
-            >
-              {LANGUAGES.map(({ label, code }) => (
-                <MenuItem key={code} value={code}>
-                  {label}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
+        <Typography variant="h1">{t("titles.journal")}</Typography>
+        <FormControl>
+          <Select
+            labelId="internationalization-select-label"
+            id="internationalization-select"
+            value={currentLanguage.code}
+            label={currentLanguage.label}
+            onChange={handleLanguage}
+          >
+            {LANGUAGES.map(({ label, code }) => (
+              <MenuItem key={code} value={code}>
+                {label}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
       </Grid>
-    </>
+    </JournalLayout>
   );
 };

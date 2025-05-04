@@ -3,9 +3,9 @@ import { Link as RouterLink } from "react-router";
 import { Grid, Typography, Button, Link } from "@mui/material";
 import { Google } from "@mui/icons-material";
 import { zodResolver } from "@hookform/resolvers/zod/src/zod.ts";
-import { InputForm } from "../components/CustomInputs";
+import { InputForm } from "@components/CustomInputs";
 import { useForm } from "react-hook-form";
-import { FormSchema, FormValues } from "../models/CustomForm";
+import { FormSchema, FormValues } from "@models/CustomForm";
 import { useTranslation } from "react-i18next";
 import { AuthLayout } from "../layout/AuthLayout";
 
@@ -55,7 +55,7 @@ export const LoginPage = () => {
           </Grid>
           <Grid container direction="row" justifyContent="end">
             <Link component={RouterLink} color="inherit" to="/auth/register">
-              Crear una cuenta
+              {t("auth_titles.create_account")}
             </Link>
           </Grid>
         </Grid>

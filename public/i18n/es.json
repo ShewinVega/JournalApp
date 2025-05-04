@@ -1,33 +1,44 @@
 {
   "titles": {
     "login": "Inicio de Sesion",
+    "register": "Crear cuenta",
     "journal": "Diario"
   },
   "buttons": {
     "login": "Iniciar sesion",
+    "register": "Registrate",
     "google": "Google"
+  },
+  "auth_titles": {
+    "account": "¿Ya tienes una cuenta?",
+    "create_account": "Crear una cuenta",
+    "get_logging": "Ingresar"
   },
   "fields": {
     "name": {
       "base": "nombre",
       "required": "Nombre requerido",
-      "min": "Nombre debe tener al menos 3 caracteres"
+      "min": "Nombre debe tener al menos 3 caracteres",
+      "placeholder:": "Edwin Vega"
     },
     "email": {
       "base": "correo",
       "required": "Correo",
-      "valid": "Correo debe ser válido"
+      "valid": "Correo debe ser válido",
+      "placeholder:": "correo@gmail.com"
     },
     "password": {
       "base": "Contraseña",
       "required": "Contraseña",
-      "min": "Contraseña debe tener al menos 6 caracteres"
+      "min": "Contraseña debe tener al menos 6 caracteres",
+      "placeholder:": "************"
     },
     "confirmPassword": {
       "base": "Confirmar contraseña",
       "required": "Confirmar contraseña es requerido",
       "min": "confirmar contraseña debe tener al menos 6 caracteres",
-      "match": "Contraseñas no coinciden"
+      "match": "Contraseñas no coinciden",
+      "placeholder:": "************"
     }
   }
 }

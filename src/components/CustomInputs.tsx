@@ -1,5 +1,5 @@
 import { Control, Controller, FieldError } from "react-hook-form";
-import { FormValues } from "../models/CustomForm";
+import { FormValues } from "@auth/models/CustomForm";
 import { SxProps, TextField } from "@mui/material";
 import { Theme } from "@emotion/react";
 

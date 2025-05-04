@@ -1,33 +1,44 @@
 {
   "titles": {
     "login": "Login",
+    "register": "Register",
     "journal": "Journal Page"
   },
   "buttons": {
-    "login": "login",
+    "login": "Login",
+    "register": "Register",
     "google": "Google"
+  },
+  "auth_titles": {
+    "account": "Do you have an account?",
+    "create_account": "Create an account",
+    "get_logging": "Get into"
   },
   "fields": {
     "name": {
       "base": "name",
       "required": "Name is required",
-      "min": "Name must have at least 3 characters"
+      "min": "Name must have at least 3 characters",
+      "placeholder:": "Edwin Vega"
     },
     "email": {
       "base": "email",
       "required": "Email is required",
-      "valid": "Email must be valid"
+      "valid": "Email must be valid",
+      "placeholder:": "email@gmail.com"
     },
     "password": {
       "base": "password",
       "required": "Password is required",
-      "min": "Password must have at least 6 characters"
+      "min": "Password must have at least 6 characters",
+      "placeholder:": "************"
     },
     "confirmPassword": {
       "base": "confirmPassword",
       "required": "ConfirmPassword is required",
       "min": "password confirmation must have at least 6 characters",
-      "match": "Passwords are differents"
+      "match": "Passwords are differents",
+      "placeholder:": "************"
     }
   }
 }
