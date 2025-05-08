@@ -1,68 +1,28 @@
-import React, { useState } from "react";
-import {
-  FormControl,
-  Grid,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-  Typography,
-} from "@mui/material";
-import {
-  Language,
-  LANGUAGES,
-} from "../../constants/internationalization.constant";
-import { useTranslation } from "react-i18next";
+import React from "react";
 import { JournalLayout } from "../layout/JournalLayout";
-
-// get language if this one exist
-const languageStorage = localStorage.getItem("lng") || "es";
+import { NothingSelectedView, NoteView } from "../views";
+import { IconButton } from "@mui/material";
+import { AddOutlined } from "@mui/icons-material";
 
 export const JournalPage = () => {
-  // translation
-  const { i18n, t } = useTranslation();
-
-  const [currentLanguage, setCurrentLanguage] = useState<Language>({
-    label: LANGUAGES.find(({ code }) => code === languageStorage)!.label,
-    code: languageStorage,
-  });
-
-  // language management
-  const handleLanguage = (event: SelectChangeEvent) => {
-    setCurrentLanguage({
-      label: LANGUAGES.find(({ code }) => code === event.target.value)!.label,
-      code: event.target.value,
-    });
-    i18n.changeLanguage(event.target.value);
-    localStorage.setItem("lng", event.target.value);
-  };
-
   return (
     <JournalLayout>
-      <Grid
-        display="flex"
-        justifyContent="space-between"
-        padding="20px 50px "
+      <NothingSelectedView />
+      {/* <NoteView /> */}
+
+      <IconButton
+        size="large"
         sx={{
-          mt: 2,
+          color: "white",
+          backgroundColor: "error.main",
+          ":hover": { backgroundColor: "error.main", opacity: 0.9 },
+          position: "fixed",
+          right: 50,
+          bottom: 50,
         }}
       >
-        <Typography variant="h1">{t("titles.journal")}</Typography>
-        <FormControl>
-          <Select
-            labelId="internationalization-select-label"
-            id="internationalization-select"
-            value={currentLanguage.code}
-            label={currentLanguage.label}
-            onChange={handleLanguage}
-          >
-            {LANGUAGES.map(({ label, code }) => (
-              <MenuItem key={code} value={code}>
-                {label}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </Grid>
+        <AddOutlined sx={{ fontSize: 30 }} />
+      </IconButton>
     </JournalLayout>
   );
 };

@@ -1,19 +1,22 @@
-import { Box } from "@mui/system";
 import React, { ReactNode } from "react";
+import { Navbar, SideBar } from "@components";
+import { Box } from "@mui/system";
+import { Toolbar } from "@mui/material";
 
 interface Props {
   children: ReactNode;
 }
 
-// const drawerWith = 240;
+const drawerWidth = 280;
 export const JournalLayout = ({ children }: Props) => {
   return (
     <Box sx={{ display: "flex" }}>
-      {/* Navbar */}
-      {/* SideBar */}
+      <Navbar drawerWidth={drawerWidth} />
 
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        {/* Toolbar */}
+      <SideBar drawerWidth={drawerWidth} />
+
+      <Box component="main" sx={{ flexGrow: 1, padding: 3 }}>
+        <Toolbar />
         {children}
       </Box>
     </Box>
