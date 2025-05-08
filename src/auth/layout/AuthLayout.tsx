@@ -28,7 +28,6 @@ export const AuthLayout = ({ children, title }: Props) => {
     flexDirection: "column",
     alignItems: "center",
     justifyItems: "center",
-    width: { md: 450 },
   });
 
   return (
@@ -40,7 +39,7 @@ export const AuthLayout = ({ children, title }: Props) => {
       sx={{ backgroundColor: "primary.main", minHeight: "100vh" }}
     >
       <StyledCard>
-        <CardContent>
+        <CardContent sx={{ width: 450 }}>
           <Box
             sx={{
               display: "flex",

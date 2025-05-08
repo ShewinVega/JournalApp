@@ -3,9 +3,9 @@ import { Link as RouterLink } from "react-router";
 import { Grid, Typography, Button, Link } from "@mui/material";
 import { Google } from "@mui/icons-material";
 import { zodResolver } from "@hookform/resolvers/zod/src/zod.ts";
-import { InputForm } from "../components/CustomInputs";
+import { CustomInput } from "@components";
 import { useForm } from "react-hook-form";
-import { FormSchema, FormValues } from "../models/CustomForm";
+import { FormSchema, FormValues } from "@models/CustomForm";
 import { useTranslation } from "react-i18next";
 import { AuthLayout } from "../layout/AuthLayout";
 
@@ -25,14 +25,14 @@ export const LoginPage = () => {
       <form onSubmit={handleSubmit()}>
         <Grid container flexDirection="column" gap="2px">
           <Grid container spacing={2} sx={{ mb: 2 }}>
-            <InputForm
+            <CustomInput
               name="email"
               label={t("fields.email.base")}
               control={control}
               type="email"
               error={errors.email}
             />
-            <InputForm
+            <CustomInput
               name="password"
               label={t("fields.password.base")}
               control={control}
@@ -53,9 +53,9 @@ export const LoginPage = () => {
               </Button>
             </Grid>
           </Grid>
-          <Grid container direction="row" justifyContent="end">
+          <Grid container direction="row" justifyContent="end" sx={{ mt: 2 }}>
             <Link component={RouterLink} color="inherit" to="/auth/register">
-              Crear una cuenta
+              {t("auth_titles.create_account")}
             </Link>
           </Grid>
         </Grid>

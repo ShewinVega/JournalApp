@@ -12,6 +12,9 @@ export default defineConfig({
       "@journal": path.resolve(__dirname, "./src/journal"),
       "@router": path.resolve(__dirname, "./src/router"),
       "@utils": path.resolve(__dirname, "./src/utils"),
+      "@components": path.resolve(__dirname, "./src/components"),
+      "@constants": path.resolve(__dirname, "./src/constants"),
+      "@models": path.resolve(__dirname, "./src/models"),
     },
   },
 });
