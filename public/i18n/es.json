@@ -2,12 +2,14 @@
   "titles": {
     "login": "Inicio de Sesion",
     "register": "Crear cuenta",
-    "journal": "Diario"
+    "journal": "Diario",
+    "create_journal": "Selecciona o crea una entrada"
   },
   "buttons": {
     "login": "Iniciar sesion",
     "register": "Registrate",
-    "google": "Google"
+    "google": "Google",
+    "save": "guardar"
   },
   "auth_titles": {
     "account": "¿Ya tienes una cuenta?",
@@ -39,6 +41,13 @@
       "min": "confirmar contraseña debe tener al menos 6 caracteres",
       "match": "Contraseñas no coinciden",
       "placeholder:": "************"
+    },
+    "journal_title": {
+      "base": "Titulo",
+      "placeholder": "Ingrese un titulo"
+    },
+    "journal_description": {
+      "placeholder": "¿Que sucedio en el dia de hoy?"
     }
   }
 }

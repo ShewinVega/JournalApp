@@ -2,12 +2,14 @@
   "titles": {
     "login": "Login",
     "register": "Register",
-    "journal": "Journal Page"
+    "journal": "Journal Page",
+    "create_journal": "Choose or create a new entry"
   },
   "buttons": {
     "login": "Login",
     "register": "Register",
-    "google": "Google"
+    "google": "Google",
+    "save": "save"
   },
   "auth_titles": {
     "account": "Do you have an account?",
@@ -39,6 +41,13 @@
       "min": "password confirmation must have at least 6 characters",
       "match": "Passwords are differents",
       "placeholder:": "************"
+    },
+    "journal_title": {
+      "base": "Title",
+      "placeholder": "Write a title"
+    },
+    "journal_description": {
+      "placeholder": "What happened today?"
     }
   }
 }
