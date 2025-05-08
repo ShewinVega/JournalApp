@@ -1,9 +1,8 @@
 import React from "react";
 import { Link as RouterLink } from "react-router";
 import { Grid, Typography, Button, Link } from "@mui/material";
-import { Google } from "@mui/icons-material";
 import { zodResolver } from "@hookform/resolvers/zod/src/zod.ts";
-import { InputForm } from "@components/CustomInputs";
+import { CustomInput } from "@components/CustomInputs";
 import { FormSchema, FormValues } from "@models/CustomForm";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
@@ -25,7 +24,7 @@ export const RegisterPage = () => {
       <form onSubmit={handleSubmit()}>
         <Grid container flexDirection="column" gap="2px">
           <Grid container spacing={2} sx={{ mb: 2 }}>
-            <InputForm
+            <CustomInput
               name="fullName"
               label={t("fields.name.base")}
               control={control}
@@ -33,7 +32,7 @@ export const RegisterPage = () => {
               placeholder={t("fields.name.placeholder")}
               error={errors.fullName}
             />
-            <InputForm
+            <CustomInput
               name="email"
               label={t("fields.email.base")}
               control={control}
@@ -41,7 +40,7 @@ export const RegisterPage = () => {
               placeholder={t("fields.email.placeholder")}
               error={errors.email}
             />
-            <InputForm
+            <CustomInput
               name="password"
               label={t("fields.password.base")}
               control={control}
