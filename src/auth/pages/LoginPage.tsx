@@ -1,53 +1,81 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Link as RouterLink } from "react-router";
-import { Grid, Typography, Button, Link } from "@mui/material";
+import { Grid, Typography, Button, Link, TextField } from "@mui/material";
 import { Google } from "@mui/icons-material";
-import { zodResolver } from "@hookform/resolvers/zod/src/zod.ts";
-import { CustomInput } from "@components";
-import { useForm } from "react-hook-form";
-import { FormSchema, FormValues } from "@models/CustomForm";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
 import { AuthLayout } from "../layout/AuthLayout";
+import { useForm } from "@hooks/useForm";
+import { checkingAuthentication, startGoogleSignIn } from "@store/auth";
 
 export const LoginPage = () => {
+  // Translation
   const { t } = useTranslation();
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormValues>({
-    resolver: zodResolver(FormSchema),
-    mode: "onBlur",
+
+  // Redux
+  const dispatch = useDispatch();
+  const { status } = useSelector((state) => state.auth);
+
+  const { email, password, onInputChange } = useForm({
+    email: `edwinvega201196@gmail.com`,
+    password: `**********`,
   });
+
+  const isAuthenticated = useMemo(() => status === "checking", [status]);
+
+  // Simple signIn
+  const onSubmit = (event) => {
+    event.preventDefault();
+    dispatch(checkingAuthentication());
+  };
+
+  // Google signIn
+  const onGoogleSignIn = () => {
+    console.info("Info onGoogleSignIn");
+    dispatch(startGoogleSignIn());
+  };
 
   return (
     <AuthLayout title="titles.login">
-      <form onSubmit={handleSubmit()}>
+      <form onSubmit={onSubmit}>
         <Grid container flexDirection="column" gap="2px">
           <Grid container spacing={2} sx={{ mb: 2 }}>
-            <CustomInput
-              name="email"
+            <TextField
               label={t("fields.email.base")}
-              control={control}
+              name="email"
               type="email"
-              error={errors.email}
+              placeholder={t("fields.email.placeholder")}
+              value={email}
+              fullWidth
+              onChange={onInputChange}
             />
-            <CustomInput
-              name="password"
+            <TextField
               label={t("fields.password.base")}
-              control={control}
+              name="password"
               type="password"
-              error={errors.password}
+              value={password}
+              fullWidth
+              onChange={onInputChange}
             />
           </Grid>
           <Grid container spacing={2} sx={{ mt: 1 }}>
             <Grid size={{ xs: 12, sm: 6 }}>
-              <Button variant="contained" fullWidth>
+              <Button
+                disabled={isAuthenticated}
+                type="submit"
+                variant="contained"
+                fullWidth
+              >
                 {t("buttons.login")}
               </Button>
             </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
-              <Button variant="contained" fullWidth>
+              <Button
+                disabled={isAuthenticated}
+                onClick={onGoogleSignIn}
+                variant="contained"
+                fullWidth
+              >
                 <Google />
                 <Typography sx={{ ml: 1 }}>{t("buttons.google")}</Typography>
               </Button>

@@ -27,7 +27,7 @@
       "base": "correo",
       "required": "Correo",
       "valid": "Correo debe ser válido",
-      "placeholder:": "correo@gmail.com"
+      "placeholder": "correo@gmail.com"
     },
     "password": {
       "base": "Contraseña",

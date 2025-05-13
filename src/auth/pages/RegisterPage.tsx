@@ -1,57 +1,86 @@
 import React from "react";
 import { Link as RouterLink } from "react-router";
-import { Grid, Typography, Button, Link } from "@mui/material";
-import { zodResolver } from "@hookform/resolvers/zod/src/zod.ts";
-import { CustomInput } from "@components/CustomInputs";
-import { FormSchema, FormValues } from "@models/CustomForm";
-import { useForm } from "react-hook-form";
+import { Grid, Typography, Button, Link, TextField } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { AuthLayout } from "../layout/AuthLayout";
+import { useForm } from "@hooks/useForm";
+
+const formData = {
+  displayName: "Edwin Vega",
+  email: `edwinvega201196@gmail.com`,
+  password: `**********`,
+};
+
+// const formValidations = {
+//   email: [(value: string) => value.includes("@"), "email must have an @"],
+//   password: [
+//     (value: string) => value.length >= 6,
+//     "password must havve more than 6 characters",
+//   ],
+//   displayName: [(value: string) => value.length >= 1, "name is required"],
+// };
 
 export const RegisterPage = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(); // i18N translation;
+
   const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormValues>({
-    resolver: zodResolver(FormSchema),
-    mode: "onBlur",
-  });
+    email,
+    password,
+    displayName,
+    onInputChange,
+    formState,
+    // isFormValid,
+    emailValid,
+    passwordValid,
+    displayNameValid,
+  } = useForm(formData); // Custom form
+
+  // submit funcntion
+  const onSubmit = (event) => {
+    event.preventDefault();
+    console.info(formState);
+  };
 
   return (
     <AuthLayout title="titles.register">
-      <form onSubmit={handleSubmit()}>
+      <form onSubmit={onSubmit}>
         <Grid container flexDirection="column" gap="2px">
           <Grid container spacing={2} sx={{ mb: 2 }}>
-            <CustomInput
-              name="fullName"
+            <TextField
               label={t("fields.name.base")}
-              control={control}
+              name="displayName"
               type="text"
               placeholder={t("fields.name.placeholder")}
-              error={errors.fullName}
+              value={displayName}
+              fullWidth
+              onChange={onInputChange}
+              error={displayNameValid}
+              helperText={displayNameValid}
             />
-            <CustomInput
-              name="email"
+            <TextField
               label={t("fields.email.base")}
-              control={control}
+              name="email"
               type="email"
               placeholder={t("fields.email.placeholder")}
-              error={errors.email}
+              value={email}
+              fullWidth
+              error={emailValid}
+              onChange={onInputChange}
             />
-            <CustomInput
-              name="password"
+            <TextField
               label={t("fields.password.base")}
-              control={control}
+              name="password"
               type="password"
-              placeholder={t("fields.password.placeholder")}
-              error={errors.password}
+              value={password}
+              fullWidth
+              error={passwordValid}
+              helperText={passwordValid}
+              onChange={onInputChange}
             />
           </Grid>
           <Grid container spacing={2} sx={{ mt: 1 }}>
             <Grid size={12}>
-              <Button variant="contained" fullWidth>
+              <Button type="submit" variant="contained" fullWidth>
                 {t("buttons.register")}
               </Button>
             </Grid>
