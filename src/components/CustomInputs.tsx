@@ -7,6 +7,7 @@ interface Props {
   name?: keyof FormValues;
   label?: string;
   type?: string;
+  province?: string | number | undefined;
   placeholder?: string;
   control?: Control<FormValues>;
   error?: FieldError;
@@ -15,6 +16,9 @@ interface Props {
   sx?: SxProps<Theme> | undefined;
   multiline?: boolean;
   minRows?: string | number | undefined;
+  onInputChange?: (
+    value: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => void;
 }
 
 export const CustomInput = ({
