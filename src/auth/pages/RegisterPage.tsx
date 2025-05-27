@@ -1,49 +1,72 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { Link as RouterLink } from "react-router";
-import { Grid, Typography, Button, Link, TextField } from "@mui/material";
+import {
+  Grid,
+  Typography,
+  Button,
+  Link,
+  TextField,
+  Alert,
+} from "@mui/material";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+
 import { AuthLayout } from "../layout/AuthLayout";
-import { useForm } from "@hooks/useForm";
+import { formValidations } from "../form-validations";
+import { useForm } from "@hooks";
+import { InputErrors } from "@components";
+import { starCreatingUserWithEmailPassword, AppDispatch } from "@store";
+import { AuthSliceInterface } from "@interfaces";
 
 const formData = {
-  displayName: "Edwin Vega",
-  email: `edwinvega201196@gmail.com`,
-  password: `**********`,
+  displayName: "",
+  email: ``,
+  password: ``,
 };
 
-// const formValidations = {
-//   email: [(value: string) => value.includes("@"), "email must have an @"],
-//   password: [
-//     (value: string) => value.length >= 6,
-//     "password must havve more than 6 characters",
-//   ],
-//   displayName: [(value: string) => value.length >= 1, "name is required"],
-// };
-
 export const RegisterPage = () => {
+  // translation and redux management
   const { t } = useTranslation(); // i18N translation;
+  const dispatch: AppDispatch = useDispatch((state) => state.auth);
+  const { errorMessage, status }: AuthSliceInterface = useSelector(
+    (state) => state.auth,
+  );
+
+  // variabls
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const isCheckingAuthentication = useMemo(
+    () => status === "checking",
+    [status],
+  );
 
   const {
     email,
     password,
     displayName,
     onInputChange,
+    isFormValid,
     formState,
-    // isFormValid,
     emailValid,
     passwordValid,
     displayNameValid,
-  } = useForm(formData); // Custom form
+  } = useForm(formData, formValidations);
 
   // submit funcntion
   const onSubmit = (event) => {
     event.preventDefault();
-    console.info(formState);
+    setFormSubmitted(true);
+
+    if (!isFormValid) return;
+
+    dispatch(starCreatingUserWithEmailPassword(formState));
   };
 
   return (
     <AuthLayout title="titles.register">
-      <form onSubmit={onSubmit}>
+      <form
+        onSubmit={onSubmit}
+        className="animate__animated animate__fadeIn animate__faster"
+      >
         <Grid container flexDirection="column" gap="2px">
           <Grid container spacing={2} sx={{ mb: 2 }}>
             <TextField
@@ -53,9 +76,15 @@ export const RegisterPage = () => {
               placeholder={t("fields.name.placeholder")}
               value={displayName}
               fullWidth
+              error={!!displayNameValid && formSubmitted}
+              helperText={
+                displayNameValid && formSubmitted ? (
+                  <InputErrors errors={[displayNameValid]} />
+                ) : (
+                  ""
+                )
+              }
               onChange={onInputChange}
-              error={displayNameValid}
-              helperText={displayNameValid}
             />
             <TextField
               label={t("fields.email.base")}
@@ -64,7 +93,14 @@ export const RegisterPage = () => {
               placeholder={t("fields.email.placeholder")}
               value={email}
               fullWidth
-              error={emailValid}
+              error={!!emailValid && formSubmitted}
+              helperText={
+                emailValid && formSubmitted ? (
+                  <InputErrors errors={[emailValid]} />
+                ) : (
+                  ""
+                )
+              }
               onChange={onInputChange}
             />
             <TextField
@@ -73,14 +109,28 @@ export const RegisterPage = () => {
               type="password"
               value={password}
               fullWidth
-              error={passwordValid}
-              helperText={passwordValid}
+              error={!!passwordValid && formSubmitted}
+              helperText={
+                passwordValid && formSubmitted ? (
+                  <InputErrors errors={[passwordValid]} />
+                ) : (
+                  ""
+                )
+              }
               onChange={onInputChange}
             />
           </Grid>
           <Grid container spacing={2} sx={{ mt: 1 }}>
+            <Grid display={!!errorMessage ? "" : "none"} size={12}>
+              <Alert severity="error">{errorMessage}</Alert>
+            </Grid>
             <Grid size={12}>
-              <Button type="submit" variant="contained" fullWidth>
+              <Button
+                disabled={isCheckingAuthentication}
+                type="submit"
+                variant="contained"
+                fullWidth
+              >
                 {t("buttons.register")}
               </Button>
             </Grid>

@@ -21,7 +21,7 @@
       "base": "name",
       "required": "Name is required",
       "min": "Name must have at least 3 characters",
-      "placeholder:": "Edwin Vega"
+      "placeholder": "Edwin Vega"
     },
     "email": {
       "base": "email",
@@ -48,6 +48,17 @@
     },
     "journal_description": {
       "placeholder": "What happened today?"
+    }
+  },
+  "user": {
+    "errors": {
+      "email": "Email is already in use",
+      "create": "User was not created",
+      "credentials": "User or password are incorrect.",
+      "logout": "User can not logout, try later"
+    },
+    "success": {
+      "create": "User created successfully"
     }
   }
 }

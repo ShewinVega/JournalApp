@@ -2,11 +2,11 @@ import { z } from "zod";
 import { messages } from "@utils";
 
 export const FormSchema: z.ZodObject<{
-  fullName: z.ZodString;
+  displayName: z.ZodString;
   email: z.ZodString;
   password: z.ZodString;
 }> = z.object({
-  fullName: z
+  displayName: z
     .string({ required_error: messages.name.required })
     .min(3, messages.name.min),
   email: z

@@ -3,12 +3,18 @@ import { AppBar, Grid, IconButton, Toolbar, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { LANGUAGES } from "@constants/internationalization.constant";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { startLogout } from "../store/auth";
+import { AppDispatch } from "../store";
 
 interface Props {
   drawerWidth: number;
 }
 
 export const Navbar = ({ drawerWidth = 240 }: Props) => {
+  // variables and instances
+  const dispatch: AppDispatch = useDispatch();
+
   // get the current language from the use
   let initialValue = LANGUAGES[1].toUpperCase();
   const { t, i18n } = useTranslation();
@@ -23,6 +29,11 @@ export const Navbar = ({ drawerWidth = 240 }: Props) => {
     setCurrentLanguage(newLanguage);
     i18n.changeLanguage(newLanguage);
     localStorage.setItem("i18nextLng", newLanguage);
+  };
+
+  // Logouit logic
+  const handleLogout = () => {
+    dispatch(startLogout());
   };
 
   return (
@@ -62,7 +73,7 @@ export const Navbar = ({ drawerWidth = 240 }: Props) => {
                 {currentLanguage.toUpperCase()}
               </Typography>
             </IconButton>
-            <IconButton color="error">
+            <IconButton onClick={handleLogout} color="error">
               <LogoutOutlined />
             </IconButton>
           </Grid>
