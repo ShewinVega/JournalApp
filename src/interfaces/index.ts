@@ -1,2 +1,2 @@
-export * from "./google-interface";
-export * from "./response-interface";
+export * from "./auth-interface";
+export * from "./journal-interface";

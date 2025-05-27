@@ -14,21 +14,21 @@ interface Props {
   title: string;
 }
 
+// card style
+const StyledCard = styled(Card)({
+  margin: "auto",
+  padding: 3,
+  borderRadius: "10px",
+  boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyItems: "center",
+});
+
 export const AuthLayout = ({ children, title }: Props) => {
   // translation
   const { t } = useTranslation();
-
-  // card style
-  const StyledCard = styled(Card)({
-    margin: "auto",
-    padding: 3,
-    borderRadius: "10px",
-    boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyItems: "center",
-  });
 
   return (
     <Grid

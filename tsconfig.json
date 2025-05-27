@@ -15,7 +15,10 @@
       "@constants/*": ["./constants/*"],
       "@models/*": ["./models/*"],
       "@hooks": ["./hooks/*"],
-      "@store": ["./store"]
+      "@store": ["./store"],
+      "@config": ["./config"],
+      "@interfaces": ["./interfaces"],
+      "@helpers": ["./helpers"]
     }
   }
 }

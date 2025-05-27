@@ -18,6 +18,7 @@ export const NothingSelectedView = () => {
         minHeight: "calc(100vh - 110px)",
         borderRadius: 3,
       }}
+      className="animate__animated animate__fadeIn animate__faster"
     >
       <Grid xs={12}>
         <StarBorderPurple500 sx={{ fontSize: 100, color: "white" }} />
