@@ -18,8 +18,8 @@ import {
   startGoogleSignIn,
   startSignInWithEmailAndPassword,
   AppDispatch,
+  RootState,
 } from "@store";
-import { AuthSliceInterface } from "@interfaces";
 
 const formData = {
   email: `samiii@gmail.com`,
@@ -32,8 +32,8 @@ export const LoginPage = () => {
 
   // Redux
   const dispatch: AppDispatch = useDispatch();
-  const { status, errorMessage }: AuthSliceInterface = useSelector(
-    (state) => state.auth,
+  const { status, errorMessage } = useSelector(
+    (state: RootState) => state.auth,
   );
 
   const { email, password, onInputChange } = useForm(formData);
@@ -45,7 +45,7 @@ export const LoginPage = () => {
   }, [status]);
 
   // Simple signIn
-  const onSubmit = (event) => {
+  const onSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     dispatch(
       startSignInWithEmailAndPassword({

@@ -1,7 +1,7 @@
 import { Language, LogoutOutlined, MenuOutlined } from "@mui/icons-material";
 import { AppBar, Grid, IconButton, Toolbar, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { LANGUAGES } from "@constants/internationalization.constant";
+import { LANGUAGES } from "@constants";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { startLogout } from "../store/auth";
