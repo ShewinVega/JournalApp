@@ -5,20 +5,21 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-    "baseUrl": "./src/",
+    "baseUrl": "./src",
     "paths": {
-      "@auth/*": ["./auth/*"],
-      "@journal/*": ["./journal/*"],
-      "@router/*": ["./router/*"],
-      "@utils/*": ["./utils/*"],
-      "@components/*": ["./components/*"],
-      "@constants/*": ["./constants/*"],
-      "@models/*": ["./models/*"],
-      "@hooks": ["./hooks/*"],
+      "@auth": ["./auth"],
+      "@journal": ["./journal"],
+      "@router": ["./router"],
+      "@utils": ["./utils"],
+      "@components": ["./components"],
+      "@constants": ["./constants"],
+      "@models": ["./models"],
+      "@hooks": ["./hooks"],
       "@store": ["./store"],
       "@config": ["./config"],
       "@interfaces": ["./interfaces"],
       "@helpers": ["./helpers"]
     }
-  }
+  },
+  "include": ["src"]
 }
