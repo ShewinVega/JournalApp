@@ -24,5 +24,8 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
     },
+    parseOptions: {
+      "project": "./tsconfig.json"
+    },
   },
 )
