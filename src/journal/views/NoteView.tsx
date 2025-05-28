@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.css";
 
-import { AppDispatch } from "../../store";
+import { AppDispatch, RootState } from "../../store";
 import {
   setActiveNote,
   starDeletingNote,
@@ -23,8 +23,7 @@ import {
 
 export const NoteView = () => {
   const { t } = useTranslation();
-  const fileInputRef = useRef();
-  const [imageArray, setImageArray] = useState<string[]>([]);
+  const fileInputRef = useRef<HTMLInputElement>();
 
   const dispatch: AppDispatch = useDispatch();
 
@@ -32,7 +31,7 @@ export const NoteView = () => {
     active: note,
     isSaving,
     messageSaved,
-  } = useSelector((state) => state.journal);
+  } = useSelector((state: RootState) => state.journal);
   const { title, body, date, onInputChange, formState } = useForm(note);
 
   const dateString = useMemo(() => {
@@ -53,13 +52,12 @@ export const NoteView = () => {
   }, [messageSaved]);
 
   const handleSaveNote = () => {
-    dispatch(startSaveNote(imageArray));
+    dispatch(startSaveNote());
   };
 
-  const onFileInputChange = ({ target }) => {
-    if (target.files === 0) return;
-    setImageArray(target.files);
-    dispatch(starUploadingImages(target.files));
+  const onFileInputChange = (event: any) => {
+    if (event.target.files === 0) return;
+    dispatch(starUploadingImages(event.target.files));
   };
 
   const onDelete = () => {
@@ -135,7 +133,7 @@ export const NoteView = () => {
         </Button>
       </Grid>
       {/* Image Gallery */}
-      <ImageGallery images={note.imageUrls} />
+      <ImageGallery images={note.imageUrls ?? []} />
     </Grid>
   );
 };

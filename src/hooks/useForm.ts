@@ -5,10 +5,7 @@ interface FormValues {
 }
 
 //TODO: formvalidation will getthe implementation in the next pull request
-export const useForm = <T extends FormValues>(
-  initialValues: T,
-  formValidations: object = {},
-) => {
+export const useForm = <T>(initialValues: T, formValidations: object = {}) => {
   const [formState, setFormState] = useState<T>(initialValues);
   const [formValidated, setFormValidated] = useState<any>({});
 

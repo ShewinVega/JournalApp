@@ -15,7 +15,7 @@ import {
 import { filesUpload, loadNotes } from "@helpers";
 
 export const startNote = () => {
-  return async (dispatch: AppDispatch, getState) => {
+  return async (dispatch: AppDispatch, getState: any) => {
     dispatch(isCreatingNote()); // call the method for change the isSaving status for disable the add button
 
     const { uid } = getState().auth;
@@ -41,7 +41,7 @@ export const startNote = () => {
 };
 
 export const startLoadingNotes = () => {
-  return async (dispatch: AppDispatch, getState) => {
+  return async (dispatch: AppDispatch, getState: any) => {
     const { uid } = getState().auth;
     if (!uid) throw new Error(`El UID de usuario no existe`);
 
@@ -52,7 +52,7 @@ export const startLoadingNotes = () => {
 };
 
 export const startSaveNote = () => {
-  return async (dispatch: AppDispatch, getState) => {
+  return async (dispatch: AppDispatch, getState: any) => {
     dispatch(setSaving());
 
     // get user uid
@@ -93,7 +93,7 @@ export const starUploadingImages = (files: FileInterface[]) => {
 };
 
 export const starDeletingNote = () => {
-  return async (dispatch: AppDispatch, getState) => {
+  return async (dispatch: AppDispatch, getState: any) => {
     const { uid } = getState().auth;
     const { active: note } = getState().journal;
 

@@ -1,7 +1,7 @@
 import env from "../config/variables.config";
 import { CloudImageInterface } from "../interfaces";
 
-export const filesUpload = async (file: File) => {
+export const filesUpload = async (file: any) => {
   try {
     if (!file) throw new Error(`We dont have any file to upload!!!`);
 
