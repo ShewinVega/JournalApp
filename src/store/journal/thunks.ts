@@ -79,8 +79,6 @@ export const starUploadingImages = (files: FileInterface[]) => {
   return async (dispatch: AppDispatch) => {
     dispatch(setSaving());
 
-    console.log(files[0]);
-
     const imagesUploaded = [];
     for (const file of files) {
       imagesUploaded.push(filesUpload(file));

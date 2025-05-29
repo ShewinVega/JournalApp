@@ -17,7 +17,6 @@ export const Navbar = ({ drawerWidth = 240 }: Props) => {
   const dispatch: AppDispatch = useDispatch();
   const { t, i18n } = useTranslation();
 
-  console.log(getStorageLanguage);
   const [currentLanguage, setCurrentLanguage] = useState(getStorageLanguage);
 
   const handleLanguage = () => {
