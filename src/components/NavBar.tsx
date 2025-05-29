@@ -1,7 +1,7 @@
 import { Language, LogoutOutlined, MenuOutlined } from "@mui/icons-material";
 import { AppBar, Grid, IconButton, Toolbar, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { LANGUAGES } from "@constants/internationalization.constant";
+import { LANGUAGES } from "@constants";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { startLogout } from "../store/auth";
@@ -13,16 +13,12 @@ interface Props {
 
 export const Navbar = ({ drawerWidth = 240 }: Props) => {
   // variables and instances
+  const getStorageLanguage: string = localStorage.getItem("i18nextLng") || "en";
   const dispatch: AppDispatch = useDispatch();
-
-  // get the current language from the use
-  let initialValue = LANGUAGES[1].toUpperCase();
   const { t, i18n } = useTranslation();
-  if (i18n.options.storageLang) {
-    initialValue = i18n.options.storageLang.split("-")[0];
-  }
 
-  const [currentLanguage, setCurrentLanguage] = useState(initialValue);
+  console.log(getStorageLanguage);
+  const [currentLanguage, setCurrentLanguage] = useState(getStorageLanguage);
 
   const handleLanguage = () => {
     const newLanguage = LANGUAGES.find((lan) => lan != currentLanguage) || "en";

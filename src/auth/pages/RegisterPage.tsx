@@ -15,8 +15,11 @@ import { AuthLayout } from "../layout/AuthLayout";
 import { formValidations } from "../form-validations";
 import { useForm } from "@hooks";
 import { InputErrors } from "@components";
-import { starCreatingUserWithEmailPassword, AppDispatch } from "@store";
-import { AuthSliceInterface } from "@interfaces";
+import {
+  starCreatingUserWithEmailPassword,
+  AppDispatch,
+  RootState,
+} from "@store";
 
 const formData = {
   displayName: "",
@@ -27,9 +30,9 @@ const formData = {
 export const RegisterPage = () => {
   // translation and redux management
   const { t } = useTranslation(); // i18N translation;
-  const dispatch: AppDispatch = useDispatch((state) => state.auth);
-  const { errorMessage, status }: AuthSliceInterface = useSelector(
-    (state) => state.auth,
+  const dispatch: AppDispatch = useDispatch();
+  const { errorMessage, status } = useSelector(
+    (state: RootState) => state.auth,
   );
 
   // variabls
@@ -52,10 +55,9 @@ export const RegisterPage = () => {
   } = useForm(formData, formValidations);
 
   // submit funcntion
-  const onSubmit = (event) => {
+  const onSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     setFormSubmitted(true);
-
     if (!isFormValid) return;
 
     dispatch(starCreatingUserWithEmailPassword(formState));

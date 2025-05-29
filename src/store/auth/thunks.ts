@@ -9,7 +9,7 @@ import { checkCredentials, login, logout } from "./auth-slice";
 import { RegisterInterface, LoginCredentials } from "@interfaces";
 import { AppDispatch } from "@store";
 
-export const checkingAuthentication = (email, password) => {
+export const checkingAuthentication = () => {
   return async (dispatch: AppDispatch): Promise<void> => {
     dispatch(checkCredentials());
   };
@@ -59,7 +59,7 @@ export const starCreatingUserWithEmailPassword = ({
   password,
   displayName,
 }: RegisterInterface) => {
-  return async (dispatch): Promise<void> => {
+  return async (dispatch: AppDispatch): Promise<void> => {
     // First we send the "checking" status.
     dispatch(checkCredentials());
 

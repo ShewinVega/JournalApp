@@ -18,8 +18,8 @@
       "@store": ["./store"],
       "@config": ["./config"],
       "@interfaces": ["./interfaces"],
-      "@helpers": ["./helpers"]
+      "@helpers": ["./helpers"],
+      "@locales": ["./locales"]
     }
-  },
-  "include": ["src"]
+  }
 }

@@ -1,16 +1,16 @@
-import { translate } from "../utils";
+import i18next from "../../i18n";
 
 export const formValidations = {
   email: [
     (value: string) => value.includes("@"),
-    translate("fields.email.valid"),
+    i18next.t("fields.email.valid"),
   ],
   password: [
     (value: string) => value.length >= 6,
-    translate("fields.password.min"),
+    i18next.t("fields.password.min"),
   ],
   displayName: [
     (value: string) => value.length >= 3,
-    translate("fields.name.min"),
+    i18next.t("fields.name.min"),
   ],
 };

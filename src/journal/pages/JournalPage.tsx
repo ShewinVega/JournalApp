@@ -3,14 +3,13 @@ import { JournalLayout } from "../layout/JournalLayout";
 import { NothingSelectedView, NoteView } from "../views";
 import { IconButton } from "@mui/material";
 import { AddOutlined } from "@mui/icons-material";
-import { AppDispatch } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
-import { startNote } from "../../store/journal/thunks";
+import { startNote, AppDispatch, RootState } from "@store";
 
-export const JournalPage = () => {
+export const JournalPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const { isSaving, active: activeNote } = useSelector(
-    (state) => state.journal,
+    (state: RootState) => state.journal,
   );
 
   const handleNewNote = () => {

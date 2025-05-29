@@ -1,18 +1,17 @@
 import { Box, Divider, Drawer, List, Toolbar, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
-import { AuthSliceInterface, NoteInterface } from "../../interfaces";
+import { NoteInterface } from "../../interfaces";
 import { SideBarItem } from "./SideBarItem";
+import { RootState } from "@store";
 
 interface Props {
   drawerWidth: number;
 }
 
 export const SideBar = ({ drawerWidth = 240 }: Props) => {
-  const { displayName }: AuthSliceInterface = useSelector(
-    (state) => state.auth,
-  );
+  const { displayName } = useSelector((state: RootState) => state.auth);
 
-  const { notes } = useSelector((state) => state.journal);
+  const { notes } = useSelector((state: RootState) => state.journal);
 
   return (
     <Box

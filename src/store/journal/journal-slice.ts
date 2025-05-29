@@ -5,7 +5,7 @@ export const initialState: {
   isSaving: boolean;
   messageSaved: string;
   notes: NoteInterface[];
-  active: NoteInterface | null;
+  active: NoteInterface | any;
 } = {
   isSaving: false,
   messageSaved: "",

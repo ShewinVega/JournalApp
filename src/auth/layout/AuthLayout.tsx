@@ -26,7 +26,7 @@ const StyledCard = styled(Card)({
   justifyItems: "center",
 });
 
-export const AuthLayout = ({ children, title }: Props) => {
+export const AuthLayout: React.FC<Props> = ({ children, title }: Props) => {
   // translation
   const { t } = useTranslation();
 

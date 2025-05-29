@@ -1,7 +1,7 @@
 import env from "../config/variables.config";
 import { CloudImageInterface } from "../interfaces";
 
-export const filesUpload = async (file: File) => {
+export const filesUpload = async (file: any) => {
   try {
     if (!file) throw new Error(`We dont have any file to upload!!!`);
 
@@ -22,7 +22,7 @@ export const filesUpload = async (file: File) => {
 
     // return the necessary url for get the image in our web in order to save it in firestore;
     return data.secure_url;
-  } catch (error) {
+  } catch (error: any) {
     console.log(`Error uploading images:  ${error}`);
     throw new Error(error.message);
   }
