@@ -101,7 +101,9 @@ export const registerUserWithEmailPassword = async ({
 
     // Update the profile using updateProfile method from firebaseAuth and we add the displayName to our user profile.
     // when you create a user using the above method, this user automatically get signed and tat will allow us to update the current user signed.
-    await updateProfile(firebaseAuth.currentUser, { displayName });
+    if (firebaseAuth.currentUser) {
+      await updateProfile(firebaseAuth.currentUser, { displayName });
+    }
 
     // we return the structure response indicated by ours interfaces
     return {
