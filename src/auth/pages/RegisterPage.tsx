@@ -58,7 +58,6 @@ export const RegisterPage = () => {
   const onSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     setFormSubmitted(true);
-
     if (!isFormValid) return;
 
     dispatch(starCreatingUserWithEmailPassword(formState));

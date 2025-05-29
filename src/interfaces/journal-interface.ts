@@ -37,3 +37,11 @@ export interface FileInterface {
   lastModified: number;
   lastModifiedDate: Date;
 }
+
+export interface SidebarItemInterface {
+  id?: string | undefined;
+  title: string;
+  body: string;
+  date: Date | number;
+  imageUrls?: string[];
+}

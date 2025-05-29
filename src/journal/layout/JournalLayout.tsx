@@ -8,7 +8,7 @@ interface Props {
 }
 
 const drawerWidth = 280;
-export const JournalLayout = ({ children }: Props) => {
+export const JournalLayout: React.FC<Props> = ({ children }: Props) => {
   return (
     <Box sx={{ display: "flex" }}>
       <Navbar drawerWidth={drawerWidth} />

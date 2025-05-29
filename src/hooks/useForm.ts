@@ -1,12 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 
-interface FormValues {
-  [key: string]: string | number;
-}
-
 //TODO: formvalidation will getthe implementation in the next pull request
-export const useForm = <T>(initialValues: T, formValidations: object = {}) => {
-  const [formState, setFormState] = useState<T>(initialValues);
+export const useForm = <T>(initialValues: T, formValidations: any = {}) => {
+  const [formState, setFormState] = useState<T | any>(initialValues);
   const [formValidated, setFormValidated] = useState<any>({});
 
   // Validations
@@ -21,7 +17,7 @@ export const useForm = <T>(initialValues: T, formValidations: object = {}) => {
 
   const onInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = event.target;
-    setFormState((prevState) => ({
+    setFormState((prevState: any) => ({
       ...prevState,
       [name]: value,
     }));
@@ -33,14 +29,12 @@ export const useForm = <T>(initialValues: T, formValidations: object = {}) => {
 
   // Inputs Validations
   const makeValidation = () => {
-    const formCheckedValues = {};
+    const formCheckedValues: any = {};
 
     for (const formField of Object.keys(formValidations)) {
       const [fn, errorMessage] = formValidations[formField];
-
-      formCheckedValues[`${formField}Valid`] = fn(formState[formField])
-        ? null
-        : errorMessage;
+      formCheckedValues[`${formField}Valid`] =
+        fn(formState[formField]) === true ? null : errorMessage;
     }
 
     setFormValidated(formCheckedValues);
@@ -49,8 +43,9 @@ export const useForm = <T>(initialValues: T, formValidations: object = {}) => {
   // send validation status for stop the wrong register if the form needs to be validated.
   const isFormValid = useMemo(() => {
     for (const itemKey of Object.keys(formValidated)) {
-      return formValidated[itemKey] !== null ? false : true;
+      if (formValidated[itemKey] !== null) return false;
     }
+    return true;
   }, [formValidated]);
 
   return {

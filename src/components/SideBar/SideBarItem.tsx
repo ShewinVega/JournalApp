@@ -1,5 +1,5 @@
 import React from "react";
-import { NoteInterface } from "../../interfaces";
+import { NoteInterface, SidebarItemInterface } from "@interfaces";
 import {
   ListItem,
   ListItemButton,
@@ -12,7 +12,7 @@ import { AppDispatch } from "../../store";
 import { useDispatch } from "react-redux";
 import { setActiveNote } from "../../store/journal";
 
-export const SideBarItem = ({
+export const SideBarItem: React.FC<SidebarItemInterface> = ({
   title,
   body,
   date,

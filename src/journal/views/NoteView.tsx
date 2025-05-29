@@ -1,5 +1,5 @@
 import { useForm } from "../../hooks";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
 import {
   DeleteOutline,
@@ -23,7 +23,7 @@ import {
 
 export const NoteView = () => {
   const { t } = useTranslation();
-  const fileInputRef = useRef<HTMLInputElement>();
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const dispatch: AppDispatch = useDispatch();
 
@@ -89,7 +89,11 @@ export const NoteView = () => {
         <IconButton
           color="primary"
           disabled={isSaving}
-          onClick={() => fileInputRef.current.click()}
+          onClick={() => {
+            if (fileInputRef.current) {
+              fileInputRef.current.click();
+            }
+          }}
         >
           <UploadOutlined />
         </IconButton>

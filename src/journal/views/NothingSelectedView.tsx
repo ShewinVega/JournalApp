@@ -3,7 +3,7 @@ import { StarBorderPurple500 } from "@mui/icons-material";
 import { Grid, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-export const NothingSelectedView = () => {
+export const NothingSelectedView: React.FC = () => {
   const { t } = useTranslation();
 
   return (
@@ -20,10 +20,18 @@ export const NothingSelectedView = () => {
       }}
       className="animate__animated animate__fadeIn animate__faster"
     >
-      <Grid xs={12}>
+      <Grid
+        sx={{
+          xs: 12,
+        }}
+      >
         <StarBorderPurple500 sx={{ fontSize: 100, color: "white" }} />
       </Grid>
-      <Grid xs={12}>
+      <Grid
+        sx={{
+          xs: 12,
+        }}
+      >
         <Typography color="white" variant="h5">
           {t("titles.create_journal")}
         </Typography>

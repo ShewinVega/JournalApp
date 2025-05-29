@@ -23,6 +23,7 @@ export default defineConfig({
       "@config": path.resolve(__dirname, "./src/config"),
       "@interfaces": path.resolve(__dirname, "./src/interfaces"),
       "@helpers": path.resolve(__dirname, "./src/helpers"),
+      "@locales": path.resolve(__dirname, "./src/locales"),
     },
   },
   define: {

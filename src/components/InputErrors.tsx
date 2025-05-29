@@ -4,7 +4,7 @@ interface Props {
   errors: string[];
 }
 
-export const InputErrors = ({ errors }: Props) => {
+export const InputErrors: React.FC<Props> = ({ errors }: Props) => {
   return (
     <>
       {errors.map((item: string) => (
