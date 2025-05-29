@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router";
 import { JournalPage } from "../pages/JournalPage";
 import { Navigate } from "react-router";
 
-export const JournalRoutes = () => {
+export const JournalRoutes: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<JournalPage />} />

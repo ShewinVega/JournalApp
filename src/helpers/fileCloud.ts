@@ -22,7 +22,7 @@ export const filesUpload = async (file: any) => {
 
     // return the necessary url for get the image in our web in order to save it in firestore;
     return data.secure_url;
-  } catch (error) {
+  } catch (error: any) {
     console.log(`Error uploading images:  ${error}`);
     throw new Error(error.message);
   }

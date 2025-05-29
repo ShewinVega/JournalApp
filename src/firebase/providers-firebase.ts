@@ -33,7 +33,7 @@ export const signInWithGoogle = async () => {
         uid,
       },
     };
-  } catch (error) {
+  } catch (error: any) {
     const errorCode = error.code;
     const errorMessage = error.message;
 
@@ -68,7 +68,7 @@ export const signInWithEmailPassword = async ({
         displayName,
       },
     };
-  } catch (error) {
+  } catch (error: any) {
     if (error.code === "auth/invalid-credential") {
       return {
         error: true,
@@ -113,7 +113,7 @@ export const registerUserWithEmailPassword = async ({
         displayName,
       },
     };
-  } catch (error) {
+  } catch (error: any) {
     if (error.code === "auth/email-already-in-use") {
       return {
         error: true,
@@ -131,7 +131,7 @@ export const registerUserWithEmailPassword = async ({
 export const logoutUser = async () => {
   try {
     await firebaseAuth.signOut();
-  } catch (error) {
+  } catch (error: any) {
     console.log(`There was an error in logout: ${error.code}`);
     return {
       error: true,

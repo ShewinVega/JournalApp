@@ -4,10 +4,10 @@ import { firebaseAuth } from "../firebase/config-firebase";
 import { login, logout } from "../store/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { startLoadingNotes } from "../store/journal";
-import { AppDispatch } from "../store";
+import { AppDispatch, RootState } from "../store";
 
 export const useCheckAuth = () => {
-  const { status } = useSelector((state) => state.auth);
+  const { status } = useSelector((state: RootState) => state.auth);
   const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {

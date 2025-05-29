@@ -1,21 +1,21 @@
-import { translate } from "./translate";
+import i18next from "../../i18n";
 
 export const messages = {
   name: {
-    required: translate("fields.name.required"),
-    min: translate("fields.name.min"),
+    required: i18next.t("fields.name.required"),
+    min: i18next.t("fields.name.min"),
   },
   email: {
-    required: translate("fields.email.required"),
-    valid: translate("fields.email.valid"),
+    required: i18next.t("fields.email.required"),
+    valid: i18next.t("fields.email.valid"),
   },
   password: {
-    required: translate("fields.password.required"),
-    min: translate("fields.password.min"),
+    required: i18next.t("fields.password.required"),
+    min: i18next.t("fields.password.min"),
   },
   confirmPassword: {
-    required: translate("fields.confirmPassword.required"),
-    min: translate("fields.confirmPassword.min"),
-    match: translate("fields.confirmPassword.match"),
+    required: i18next.t("fields.confirmPassword.required"),
+    min: i18next.t("fields.confirmPassword.min"),
+    match: i18next.t("fields.confirmPassword.match"),
   },
 };

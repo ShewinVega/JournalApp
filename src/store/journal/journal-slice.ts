@@ -5,7 +5,7 @@ export const initialState: {
   isSaving: boolean;
   messageSaved: string;
   notes: NoteInterface[];
-  active: NoteInterface | null;
+  active: NoteInterface | any;
 } = {
   isSaving: false,
   messageSaved: "",
@@ -48,7 +48,7 @@ export const journalSlice = createSlice({
       state.messageSaved = `${action.payload.title} updated successfully`;
     },
     setImagesToActiveNote: (state, action) => {
-      state.active!.imageUrls = [...state.active.imageUrls, ...action.payload];
+      state.active.imageUrls = [...state.active.imageUrls, ...action.payload];
       state.isSaving = false;
     },
     clearNotesLogout: (state) => {

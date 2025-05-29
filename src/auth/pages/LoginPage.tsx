@@ -22,11 +22,11 @@ import {
 } from "@store";
 
 const formData = {
-  email: `samiii@gmail.com`,
-  password: `Samuel123`,
+  email: ``,
+  password: ``,
 };
 
-export const LoginPage = () => {
+export const LoginPage: React.FC = () => {
   // Translation
   const { t } = useTranslation();
 
