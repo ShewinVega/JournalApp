@@ -10,8 +10,8 @@ export const ImageGallery: React.FC<Props> = ({ images }: Props) => {
     <ImageList
       sx={{ width: "100%", height: 500 }}
       variant="quilted"
-      cols={4}
-      rowHeight={200}
+      cols={2}
+      rowHeight={250}
     >
       {images.map((image: string) => (
         <ImageListItem key={image}>
