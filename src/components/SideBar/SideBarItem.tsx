@@ -26,7 +26,7 @@ export const SideBarItem: React.FC<SidebarItemInterface> = ({
   };
 
   return (
-    <ListItem>
+    <ListItem sx={{ borderBottom: 1, borderColor: "grey.500" }}>
       <ListItemButton onClick={onClickNote}>
         <ListItemIcon>
           <TurnedInNot />
