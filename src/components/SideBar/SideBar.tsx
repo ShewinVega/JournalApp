@@ -16,7 +16,9 @@ export const SideBar = ({ drawerWidth = 240 }: Props) => {
   return (
     <Box
       component="nav"
+      // display="none"
       sx={{
+        display: { xs: "none", lg: "block" },
         width: { sm: drawerWidth },
         flexShrink: { sm: 0 },
       }}

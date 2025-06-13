@@ -1,11 +1,12 @@
-import { Language, LogoutOutlined, MenuOutlined } from "@mui/icons-material";
-import { AppBar, Grid, IconButton, Toolbar, Typography } from "@mui/material";
-import { useTranslation } from "react-i18next";
-import { LANGUAGES } from "@constants";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { startLogout } from "../store/auth";
-import { AppDispatch } from "../store";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Language, LogoutOutlined } from "@mui/icons-material";
+import { AppBar, Grid, IconButton, Toolbar, Typography } from "@mui/material";
+
+import { LANGUAGES } from "@constants";
+import { AppDispatch, setActiveNote, startLogout } from "@store";
+import { MenuDrawer } from "./Menu";
 
 interface Props {
   drawerWidth: number;
@@ -31,6 +32,10 @@ export const Navbar = ({ drawerWidth = 240 }: Props) => {
     dispatch(startLogout());
   };
 
+  const handleHome = () => {
+    dispatch(setActiveNote(null));
+  };
+
   return (
     <AppBar
       position="fixed"
@@ -45,7 +50,7 @@ export const Navbar = ({ drawerWidth = 240 }: Props) => {
           edge="start"
           sx={{ mr: 1, display: { sm: "none" } }}
         >
-          <MenuOutlined />
+          <MenuDrawer />
         </IconButton>
         <Grid
           container
@@ -54,7 +59,13 @@ export const Navbar = ({ drawerWidth = 240 }: Props) => {
           alignItems="center"
           width="100%"
         >
-          <Typography variant="h6" noWrap component="div">
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            onClick={handleHome}
+            sx={{ ":hover": { cursor: "pointer" } }}
+          >
             {t("titles.journal")}
           </Typography>
           <Grid container direction="row" alignItems="center" gap="2px">

@@ -32,7 +32,7 @@ export const NothingSelectedView: React.FC = () => {
           xs: 12,
         }}
       >
-        <Typography color="white" variant="h5">
+        <Typography color="white" variant="h5" noWrap>
           {t("titles.create_journal")}
         </Typography>
       </Grid>
